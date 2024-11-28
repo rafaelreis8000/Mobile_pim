@@ -54,6 +54,10 @@ class TelaRelatorios:
         print(vendaReceita)
 
         relatorio_1=ft.Container(
+            width=300,
+            border=ft.border.only(
+                top=ft.border.BorderSide(2,"black")),
+            padding=15,
             content=ft.Column(
                 [
                     ft.Text(f"Venda último mês: ", color='#000000'),
@@ -64,6 +68,10 @@ class TelaRelatorios:
         )
 
         relatorio_2=ft.Container(
+            width=300,
+            border=ft.border.only(
+                top=ft.border.BorderSide(2,"black")),
+            padding=15,
             content=ft.Column(
                 [
                     ft.Text(f"Culturas mais vendidas: ", color='#000000'),
@@ -80,6 +88,10 @@ class TelaRelatorios:
             relatorio_2.content.controls.append(venda_info)
 
         relatorio_3=ft.Container(
+            width=300,
+            border=ft.border.only(
+                top=ft.border.BorderSide(2,"black")),
+            padding=15,
             content=ft.Column(
                 [
                     ft.Text(f"Plantios último mês: ", color='#000000'),
@@ -108,6 +120,10 @@ class TelaRelatorios:
             relatorio_3.content.controls.append(status_info)
 
         relatorio_4=ft.Container(
+            width=300,
+            border=ft.border.only(
+                top=ft.border.BorderSide(2,"black")),
+            padding=15,
             content=ft.Column(
                 [
                     ft.Text(f"Colheitas último mês: ", color='#000000'),
@@ -117,6 +133,10 @@ class TelaRelatorios:
         )
 
         relatorio_5=ft.Container(
+            width=300,
+            border=ft.border.only(
+                top=ft.border.BorderSide(2,"black")),
+            padding=15,
             content=ft.Column(
                 [
                     ft.Text(f"Colheitas último mês: ", color='#000000'),
@@ -134,6 +154,10 @@ class TelaRelatorios:
             relatorio_5.content.controls.append(insumo_info)
 
         relatorios_container=ft.Container(
+            width=300,
+            bgcolor="#D9D9D9",
+            margin=15,
+            border=ft.border.all(5,ft.colors.BLACK),
             content=ft.Column(
                 [
                     relatorio_1,
@@ -142,11 +166,9 @@ class TelaRelatorios:
                     relatorio_4,
                     relatorio_5
                 ],
-                alignment=ft.MainAxisAlignment.START,
+                scroll="auto",
                 expand=True,
-            ),
-            padding=0,
-            margin=ft.margin.only(left=140, bottom=100)
+            )
         )
 
         ###############################################################################
@@ -155,16 +177,20 @@ class TelaRelatorios:
         tela=ft.Container(
             expand=True,
             bgcolor="#1D3331",
+            alignment=ft.alignment.center,
             content=ft.ResponsiveRow(
                 col={"xs":12,"sm":6,"md":4},
                 controls=[
                     appbar,
-                    ft.Column(
-                        [
-                            relatorios_container
-                        ]
-                    )
-                    ]
+                    ft.Container(
+                        content=ft.Column(
+                            [
+                                relatorios_container
+                            ]
+                        ),
+                        alignment=ft.alignment.center
+                    ),
+                ]
             )
         )
         
